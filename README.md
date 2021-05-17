@@ -2,8 +2,7 @@
  Aplicación de Android que permite sensar luminosidad, proximidad y valores de GPS. Los datos anteriores se envían a la página de Thingsboard en su versión demo para realizar pruebas.
 La aplicación se la ha realizado en Android Studio 4.1.2. Para poner en contexto en la realización de la aplicación se utilizaron varias librerías compatibles con Java como “Eclipse Paho Java Client” que permite usar el protocolo Mqtt, la librería “Eclipse Californium” que permite usar el protocolo Coap y la librería “HttpURLConnection” para usar el protocolo Http. Además, los ejemplos de conexión en muchos de los casos los da la librería para editar y hacer la información compatible con el formato de texto Json que es el que utiliza ThingsBoard.
 
-
-
+![](ima/App_interfazGrafica.png)
 
 
 
@@ -35,6 +34,7 @@ Solo se presenta la parte gráfica en la Figura 1 de la misma ya que el código 
 
 
 
+![](ima/Things_Crear_Panel_13.png)
 
 
 
