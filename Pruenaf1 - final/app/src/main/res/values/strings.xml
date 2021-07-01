@@ -7,8 +7,6 @@
     <string name="http">Http</string>
     <string name="coap">Coap</string>
     <string name="sensores_luz_apr_ximidad_y_gps">Sensores: luz,apróximidad y GPS</string>
-    <string name="label_host"></string>
-    <string name="label_token"></string>
-    <string name="name_host">Host</string>
-    <string name="name_token">Token</string>
+    <string name="name_host">Host/Guardar</string>
+    <string name="name_token">Token/Cargar</string>
 </resources>

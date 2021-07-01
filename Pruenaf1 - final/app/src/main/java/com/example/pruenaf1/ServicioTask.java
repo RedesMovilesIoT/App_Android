@@ -105,6 +105,6 @@ public class ServicioTask extends AsyncTask<Void, Void, String> {
         super.onPostExecute(s);
         progressDialog.dismiss();
         resultadoapi=s;
-       Toast.makeText(httpContext,resultadoapi,Toast.LENGTH_LONG).show();//mostrara una notificacion con el resultado del request
+      // Toast.makeText(httpContext,resultadoapi,Toast.LENGTH_LONG).show();//mostrara una notificacion con el resultado del request
     }
 }

@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -45,14 +46,12 @@ public class MainActivity extends AppCompatActivity {
     private static final long MIN_TIME = 10000; // 10 segundos
     TextView tvMensaje;
     TextView textView,textViewcolor;
-    Button btnCntMqtt;
+    //Button btnCntMqtt;
     SensorManager mSensorManager;
     Sensor sLuminosidad;
     Sensor sensorProx;
-    Sensor sensorGPS;
     SensorEventListener lightEventListener;
     SensorEventListener AproxsensorEventListener;
-    LocationListener Local;
     float maximoValor;
     float valor;
     int estado;
@@ -61,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     Double Latitud;
     Double Longitud;
     String lati,longi;
+    EditText etDato;
+    EditText etDato1;
+    Button btnGuardar,btnGuardar1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +71,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textView);
         textViewcolor = findViewById(R.id.textView7);
-        btnCntMqtt = findViewById(R.id.btnCntMqtt);
+        //btnCntMqtt = findViewById(R.id.btnCntMqtt);
+
+       // etDato = (EditText)findViewById(R.id.etDato);
+        btnGuardar = (Button)findViewById(R.id.namehost);
+        btnGuardar1 = (Button)findViewById(R.id.nametoken);
+
+        SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+        String dato1 = sharpref.getString("Host","No hay dato");
+        String dato2 = sharpref.getString("Token","No hay dato");
+        Toast.makeText(getApplicationContext(), "Host : "+dato1,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Token : "+dato2,Toast.LENGTH_LONG).show();
         // Activacion de servicio Sensor_Service asi como de los sensores de luz y proximidad
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sLuminosidad = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         sensorProx = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         // Adquisicion del Host y el Token de la aplicacion
-        ((EditText) findViewById(R.id.editHost)).setText("demo.thingsboard.io");
-        ((EditText) findViewById(R.id.edittoken)).setText("Your token");
+
+        etDato= ((EditText) findViewById(R.id.editHost));//.setText("demo.thingsboard.io");
+        etDato1=((EditText) findViewById(R.id.edittoken));//.setText("pIh9yMLI0yW1fBfORY9p");
 
         tvMensaje = findViewById(R.id.tvMensaje);
         // Condición If para activar el GPS del celular cuando este este desactivado
@@ -98,6 +112,37 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "El celular no tiene sensor de aproximación", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+                //String valor = sharpref.getString("MiDato","No hay dato");
+                SharedPreferences.Editor editor = sharpref.edit();
+                String Dato1 =etDato.getText().toString();
+                String Dato2 =etDato1.getText().toString();
+                editor.putString("Host",Dato1 );
+                editor.putString("Token",Dato2 );
+                editor.commit();
+
+            }
+        });
+        btnGuardar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+                String dato1 = sharpref.getString("Host","No hay dato");
+                String dato2 = sharpref.getString("Token","No hay dato");
+                Toast.makeText(getApplicationContext(), "Host : "+dato1,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Token : "+dato2,Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
         // max value for light sensor
         maximoValor = sLuminosidad.getMaximumRange();
         lightEventListener = new SensorEventListener() {
