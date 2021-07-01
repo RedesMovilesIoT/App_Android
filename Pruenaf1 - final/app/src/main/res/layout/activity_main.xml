@@ -140,7 +140,7 @@
         android:layout_weight="1"
         android:singleLine="true"
         android:textSize="15sp"
-        android:text="Your Token"
+        android:text="Your token"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout

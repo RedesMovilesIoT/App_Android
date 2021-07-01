@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         // Adquisicion del Host y el Token de la aplicacion
 
         etDato= ((EditText) findViewById(R.id.editHost));//.setText("demo.thingsboard.io");
-        etDato1=((EditText) findViewById(R.id.edittoken));//.setText("pIh9yMLI0yW1fBfORY9p");
+        etDato1=((EditText) findViewById(R.id.edittoken));//.setText("Your token");
 
         tvMensaje = findViewById(R.id.tvMensaje);
         // Condición If para activar el GPS del celular cuando este este desactivado
