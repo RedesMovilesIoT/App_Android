@@ -3,10 +3,10 @@
     <string name="btnCntMqtt">Enviar</string>
     <string name="btnCntHttp">Enviar</string>
     <string name="btnCntCoap">Enviar</string>
-    <string name="mqtt">Mqtt</string>
-    <string name="http">Http</string>
-    <string name="coap">Coap</string>
-    <string name="sensores_luz_apr_ximidad_y_gps">Sensores: luz,apróximidad y GPS</string>
+    <string name="mqtt">MQTT</string>
+    <string name="http">HTTP</string>
+    <string name="coap">COAP</string>
+    <string name="sensores_luz_apr_ximidad_y_gps">Sensores: luz, proximidad y GPS</string>
     <string name="name_host">Host/Guardar</string>
     <string name="name_token">Token/Cargar</string>
 </resources>
