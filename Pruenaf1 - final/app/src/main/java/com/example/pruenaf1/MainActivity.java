@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etDato;
     EditText etDato1;
     Button btnGuardar,btnGuardar1;
-
+    //String dato1,dato2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         // Adquisicion del Host y el Token de la aplicacion
 
         etDato= ((EditText) findViewById(R.id.editHost));//.setText("demo.thingsboard.io");
-        etDato1=((EditText) findViewById(R.id.edittoken));//.setText("pIh9yMLI0yW1fBfORY9p");
+        etDato1=((EditText) findViewById(R.id.edittoken));//.setText("Your token");
 
         tvMensaje = findViewById(R.id.tvMensaje);
         // Condición If para activar el GPS del celular cuando este este desactivado
@@ -242,8 +242,12 @@ public class MainActivity extends AppCompatActivity {
         }
     public void sendMessageMqtt (View view) {
         // Adquisición del Host y el Token de la aplicación
-        String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
-        String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        //String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
+        //String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+        String host = sharpref.getString("Host","No hay dato");
+        String token = sharpref.getString("Token","No hay dato");
+
         // Variables tipo String de los valores de Mqtt en el servidor
         final String topic = "v1/devices/me/telemetry";
         final int qos = 2;
@@ -289,16 +293,22 @@ public class MainActivity extends AppCompatActivity {
     }
     public void sendMessageHttp (View view) {
         // Adquisición del Host y el Token de la aplicación
-        String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
-        String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        //String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
+        //String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+        String host = sharpref.getString("Host","No hay dato");
+        String token = sharpref.getString("Token","No hay dato");
         // Do something in response to button
         ServicioTask servicioTask= new ServicioTask(this,"https://"+host+"/api/v1/"+token+"/telemetry",va,es,lati,longi);
         servicioTask.execute();
     }
     public void clickGet(View view) {
         // Adquisición del Host y el Token de la aplicación
-        String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
-        String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        //String host = ((EditText)findViewById(R.id.editHost)).getText().toString();
+        //String token = ((EditText)findViewById(R.id.edittoken)).getText().toString();
+        SharedPreferences sharpref = getPreferences(Context.MODE_PRIVATE);
+        String host = sharpref.getString("Host","No hay dato");
+        String token = sharpref.getString("Token","No hay dato");
         String uri ="coap://"+host+"/api/v1/"+token+"/telemetry";
         new CoapGetTask().execute(uri);
     }

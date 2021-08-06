@@ -45,15 +45,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+//Librerías para COAP
     implementation 'org.eclipse.californium:californium-core:2.6.2'
     implementation 'org.eclipse.californium:element-connector:2.6.2'
     implementation 'org.eclipse.californium:scandium:2.6.2'
     implementation 'org.eclipse.californium:demo-certs:2.6.2'
-
+//Librerías para MQTT
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
   //  implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-
+//Librería de mapas
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
 }
